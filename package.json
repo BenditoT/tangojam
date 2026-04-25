@@ -1,0 +1,14 @@
+{
+  "name": "tangojam",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "http-server . -p 4173 -c-1 --silent",
+    "test:e2e": "playwright test",
+    "test:install": "playwright install --with-deps chromium"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.47.0",
+    "http-server": "^14.1.1"
+  }
+}

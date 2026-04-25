@@ -1,0 +1,355 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Tangojam — Norbert Kotzan · Bandoneon, Milonga, Unterricht</title>
+  <meta name="description" content="Norbert Kotzan: Bandoneonist buchen, Tango-Unterricht nehmen, nächste Milonga finden. Konzerte, DJ-Sets, Kompositionen — Heidelberg & Region.">
+  <meta name="theme-color" content="#0b0b09">
+  <link rel="canonical" href="https://tangojam.de/">
+  <meta property="og:title" content="Tangojam — Norbert Kotzan">
+  <meta property="og:description" content="Bandoneonist buchen · Tango lernen · Milonga-Termine · Heidelberg">
+  <meta property="og:image" content="https://tangojam.de/assets/img/hero.jpg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,700;1,9..144,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/styles.css">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"Norbert Kotzan","url":"https://tangojam.de","jobTitle":"Bandoneonist","image":"https://tangojam.de/assets/img/portrait.jpg","address":{"@type":"PostalAddress","addressLocality":"Heidelberg","addressCountry":"DE"}}</script>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-c"><span class="loader-n">0</span></div>
+    <div class="loader-bar"><div class="loader-fill"></div></div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cur" id="cur" aria-hidden="true"><div class="cur-d"></div><div class="cur-r"></div></div>
+
+  <!-- GRAIN -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- PROGRESS -->
+  <div class="prog" id="prog" aria-hidden="true"></div>
+
+  <!-- HEADER -->
+  <header class="hdr" id="hdr">
+    <a class="logo" href="#hero" data-h><span class="logo-t">tango</span><span class="logo-j">jam</span></a>
+    <nav class="nav" id="nav">
+      <a href="#termine" data-h>Termine</a>
+      <a href="#buchen" data-h>Buchen</a>
+      <a href="#unterricht" data-h>Unterricht</a>
+      <a href="#milonga" data-h>Milonga</a>
+      <a href="#kontakt" data-h>Kontakt</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menü" aria-expanded="false" data-h>
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mob-menu" id="mob-menu">
+    <nav class="mob-nav">
+      <a href="#termine" data-h>Termine</a>
+      <a href="#buchen" data-h>Buchen</a>
+      <a href="#unterricht" data-h>Unterricht</a>
+      <a href="#milonga" data-h>Milonga</a>
+      <a href="#kontakt" data-h>Kontakt</a>
+    </nav>
+  </div>
+
+  <main>
+
+    <!-- ===== HERO: Was suchst du? ===== -->
+    <section class="hero" id="hero">
+      <div class="hero-bg">
+        <img src="./assets/img/hero.jpg" alt="" class="hero-img">
+        <div class="hero-dim"></div>
+      </div>
+      <div class="hero-content">
+        <p class="hero-tag anim">Norbert Kotzan · Bandoneon · Heidelberg</p>
+        <h1 class="hero-h1">
+          <span class="hl"><span class="hw">Tango</span></span>
+          <span class="hl"><span class="hw">Jam</span></span>
+        </h1>
+
+        <!-- NEXT EVENT TEASER -->
+        <div class="hero-next anim" data-d="2" id="hero-next">
+          <span class="hero-next-label">Nächster Termin</span>
+          <span class="hero-next-event" id="hero-next-event">Wird geladen…</span>
+        </div>
+
+        <!-- QUICK PATHS — the core idea of v6 -->
+        <div class="hero-paths anim" data-d="3">
+          <a href="#termine" class="hp" data-h>
+            <span class="hp-icon">📅</span>
+            <span class="hp-text">Alle Termine</span>
+          </a>
+          <a href="#buchen" class="hp" data-h>
+            <span class="hp-icon">🎵</span>
+            <span class="hp-text">Konzert buchen</span>
+          </a>
+          <a href="#unterricht" class="hp" data-h>
+            <span class="hp-icon">💃</span>
+            <span class="hp-text">Tango lernen</span>
+          </a>
+          <a href="#milonga" class="hp" data-h>
+            <span class="hp-icon">🌙</span>
+            <span class="hp-text">Nächste Milonga</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== TERMINE — Prominent, filterable ===== -->
+    <section class="s s-dark" id="termine">
+      <div class="w">
+        <div class="s-head">
+          <div class="s-label anim">Termine</div>
+          <h2 class="s-title anim">Was kommt</h2>
+        </div>
+        <div class="ev-bar anim">
+          <div class="ev-tabs">
+            <button class="ev-tab active" data-filter="all">Alle</button>
+            <button class="ev-tab" data-filter="konzert">Konzerte</button>
+            <button class="ev-tab" data-filter="milonga">Milongas</button>
+            <button class="ev-tab" data-filter="dj">DJ-Sets</button>
+          </div>
+        </div>
+        <div class="ev-list" id="ev-list" data-src="./assets/data/events.json"></div>
+        <p class="ev-hint anim">Klicke auf einen Termin für Details und Tickets.</p>
+      </div>
+    </section>
+
+    <!-- ===== BUCHEN — Konzert, DJ, Komposition ===== -->
+    <section class="s s-cream" id="buchen">
+      <div class="w">
+        <div class="s-head s-head-dk">
+          <div class="s-label anim">Buchen</div>
+          <h2 class="s-title anim">Wie kann ich helfen?</h2>
+          <p class="s-sub anim">Ob Konzert, DJ-Set oder eine eigene Komposition — erzähl mir von deinem Projekt.</p>
+        </div>
+        <div class="book-grid">
+
+          <div class="book-card anim" id="book-konzert">
+            <div class="bc-img"><img src="./assets/img/concert.jpg" alt="Live-Konzert" loading="lazy"></div>
+            <div class="bc-body">
+              <h3>Konzert buchen</h3>
+              <p>Bandoneon solo, Duo, Trio, Cuarteto oder Orquesta Típica — vom intimen Wohnzimmerkonzert bis zur großen Bühne. Tango, Tango-Jazz, zeitgenössische Musik.</p>
+              <div class="bc-what">
+                <span>Cantango</span><span>Bien Porteño</span><span>Bandoneo</span><span>Tango Marcando</span><span>Solo</span>
+              </div>
+              <a class="cta cta-dk" href="mailto:tangojamsession@gmail.com?subject=Konzert-Anfrage" data-h>Anfrage senden →</a>
+            </div>
+          </div>
+
+          <div class="book-card anim" id="book-dj">
+            <div class="bc-img"><img src="./assets/img/milonga-scene.jpg" alt="Milonga DJ" loading="lazy"></div>
+            <div class="bc-body">
+              <h3>DJ für deine Milonga</h3>
+              <p>Tango-DJ mit eigenem Stil: Tanzbare Non-Tangos und traditionelle Tangos, durchdacht kuratiert. Für Milongas, Festivals, Marathons und private Events.</p>
+              <div class="bc-what">
+                <span>Milongas</span><span>Marathons</span><span>Festivals</span><span>Private Events</span>
+              </div>
+              <a class="cta cta-dk" href="mailto:tangojamsession@gmail.com?subject=DJ-Anfrage" data-h>Anfrage senden →</a>
+            </div>
+          </div>
+
+          <div class="book-card anim" id="book-komposition">
+            <div class="bc-img"><img src="./assets/img/portrait.jpg" alt="Komposition" loading="lazy"></div>
+            <div class="bc-body">
+              <h3>Komposition beauftragen</h3>
+              <p>Eigene Tango-Kompositionen, Arrangements, Film- und Theatermusik. Von der Idee bis zur fertigen Partitur oder Aufnahme.</p>
+              <div class="bc-what">
+                <span>Tango</span><span>Film</span><span>Theater</span><span>Arrangement</span>
+              </div>
+              <a class="cta cta-dk" href="mailto:tangojamsession@gmail.com?subject=Kompositions-Anfrage" data-h>Anfrage senden →</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== UNTERRICHT ===== -->
+    <section class="s s-dark" id="unterricht">
+      <div class="w">
+        <div class="teach-layout">
+          <div class="teach-img anim-reveal">
+            <img src="./assets/img/tanz.jpg" alt="Tango Unterricht" loading="lazy">
+          </div>
+          <div class="teach-text">
+            <div class="s-head">
+              <div class="s-label anim">Tango lernen</div>
+              <h2 class="s-title anim">Wie eine Sprache — nicht wie eine Choreografie.</h2>
+            </div>
+            <div class="teach-body anim">
+              <p>Als Musiker vermittle ich ein tiefes Verständnis für die Musik im Tanz. Führen und Folgen als nonverbale Kommunikation — mit Fokus auf Musikalität, Dynamik und Improvisation.</p>
+              <div class="teach-details">
+                <div class="td">
+                  <span class="td-label">Was</span>
+                  <span class="td-val">Einzelunterricht & Kleingruppen</span>
+                </div>
+                <div class="td">
+                  <span class="td-label">Wo</span>
+                  <span class="td-val">Heidelberg</span>
+                </div>
+                <div class="td">
+                  <span class="td-label">Fokus</span>
+                  <span class="td-val">Musikalität, Improvisation, Dynamik</span>
+                </div>
+                <div class="td">
+                  <span class="td-label">Erfahrung</span>
+                  <span class="td-val">15+ Jahre, Praxis in Argentinien</span>
+                </div>
+              </div>
+              <a class="cta cta-accent" href="mailto:tangoheidelberg@gmail.com?subject=Unterricht-Anfrage" data-h>Probestunde anfragen →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== MILONGA — Klub_K + Bendito ===== -->
+    <section class="s s-milo" id="milonga">
+      <div class="milo-bg"><img src="./assets/img/kloster.jpg" alt="" loading="lazy" aria-hidden="true"></div>
+      <div class="milo-dim"></div>
+      <div class="w milo-inner">
+        <div class="s-head s-head-lt">
+          <div class="s-label anim">Milonga</div>
+          <h2 class="s-title anim">Milonga im Klub_K</h2>
+        </div>
+
+        <div class="milo-highlight anim">
+          <div class="milo-next" id="milo-next">
+            <span class="mn-label">Nächste Milonga</span>
+            <span class="mn-date" id="mn-date">—</span>
+            <span class="mn-countdown" id="mn-countdown"></span>
+          </div>
+        </div>
+
+        <div class="milo-info anim">
+          <div class="milo-col">
+            <p class="milo-time">Jeden 3. Donnerstag · 20 – 24 Uhr</p>
+            <p>Tanzbare Non-Tangos und traditionelle Tangos im Verhältnis 70/30. Holzfußboden, guter Sound, entspannte Atmosphäre.</p>
+            <p class="milo-addr">Kulturhaus Karlstorbahnhof<br>Marlene-Dietrich-Platz 3 · 69126 Heidelberg</p>
+            <a class="cta cta-outline" href="https://www.karlstorbahnhof.de/anfahrt/" target="_blank" rel="noopener" data-h>Anfahrt →</a>
+          </div>
+          <div class="milo-col">
+            <h3 class="milo-dates-t">Alle Termine 2026</h3>
+            <div class="milo-dates" id="milo-dates">
+              <span>Do, 15. Jan</span><span>Do, 19. Feb</span><span>Do, 19. Mär</span>
+              <span>Do, 16. Apr</span><span>Do, 21. Mai</span><span>Do, 18. Jun</span><span>Do, 16. Jul</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="milo-bendito anim">
+          <h3>Bendito Tango Marathon</h3>
+          <p>Tango im Kloster — ein besonderer Ort.</p>
+          <a class="cta cta-outline" href="https://benditotango.de/" target="_blank" rel="noopener" data-h>benditotango.de →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ENSEMBLES — kurz, als Referenz fürs Booking ===== -->
+    <section class="s s-dark" id="ensembles">
+      <div class="w">
+        <div class="s-head">
+          <div class="s-label anim">Ensembles</div>
+          <h2 class="s-title anim">Mit wem ich spiele</h2>
+          <p class="s-sub anim">Verschiedene Besetzungen für verschiedene Anlässe.</p>
+        </div>
+        <div class="ens-grid">
+          <article class="ens anim" data-h>
+            <div class="ens-img"><img src="./assets/img/cantango.jpg" alt="Cantango" loading="lazy"></div>
+            <div class="ens-body">
+              <h3>Cantango</h3>
+              <p class="ens-type">Quartett · Eigene Kompositionen</p>
+              <p class="ens-for">Ideal für: Konzertreihen, Festivals, intime Abende</p>
+            </div>
+          </article>
+          <article class="ens anim" data-h>
+            <div class="ens-img"><img src="./assets/img/bandoneo.jpg" alt="Band-o-Neo" loading="lazy"></div>
+            <div class="ens-body">
+              <h3>Bandoneo</h3>
+              <p class="ens-type">Trio · NeoTangojazz</p>
+              <p class="ens-for">Ideal für: Jazzclubs, Crossover-Events</p>
+              <a class="ens-link" href="https://bandoneo.de/" target="_blank" rel="noopener" data-h>bandoneo.de →</a>
+            </div>
+          </article>
+          <article class="ens anim" data-h>
+            <div class="ens-img"><img src="./assets/img/bien-porteno.jpg" alt="Bien Porteño" loading="lazy"></div>
+            <div class="ens-body">
+              <h3>Bien Porteño</h3>
+              <p class="ens-type">Cuarteto · Tango para bailar</p>
+              <p class="ens-for">Ideal für: Milongas mit Live-Musik, Tanz-Events</p>
+              <a class="ens-link" href="http://bienporteno.de" target="_blank" rel="noopener" data-h>bienporteno.de →</a>
+            </div>
+          </article>
+          <article class="ens anim" data-h>
+            <div class="ens-img"><img src="./assets/img/marcando.jpg" alt="Tango Marcando" loading="lazy"></div>
+            <div class="ens-body">
+              <h3>Tango Marcando</h3>
+              <p class="ens-type">Orquesta Típica · Goldene Ära</p>
+              <p class="ens-for">Ideal für: Große Bühnen, Silvester, Galas</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== KONTAKT ===== -->
+    <section class="s s-cream" id="kontakt">
+      <div class="w">
+        <div class="s-head s-head-dk s-head-ctr">
+          <div class="s-label anim">Kontakt</div>
+          <h2 class="s-title anim">Schreib mir.</h2>
+          <p class="s-sub anim">Wähle direkt den passenden Kanal — oder schreib einfach los.</p>
+        </div>
+        <div class="k-grid anim">
+          <a href="mailto:tangojamsession@gmail.com?subject=Konzert-Anfrage" class="k-card" data-h>
+            <span class="k-icon">🎵</span>
+            <span class="k-label">Konzert / DJ buchen</span>
+            <span class="k-val">tangojamsession@gmail.com</span>
+          </a>
+          <a href="mailto:tangoheidelberg@gmail.com?subject=Unterricht-Anfrage" class="k-card" data-h>
+            <span class="k-icon">💃</span>
+            <span class="k-label">Tango-Unterricht</span>
+            <span class="k-val">tangoheidelberg@gmail.com</span>
+          </a>
+          <a href="mailto:tangojamsession@gmail.com?subject=Komposition-Anfrage" class="k-card" data-h>
+            <span class="k-icon">✍️</span>
+            <span class="k-label">Komposition</span>
+            <span class="k-val">tangojamsession@gmail.com</span>
+          </a>
+          <a href="http://eepurl.com/dvWs2H" target="_blank" rel="noopener" class="k-card" data-h>
+            <span class="k-icon">📬</span>
+            <span class="k-label">Newsletter</span>
+            <span class="k-val">Termine per Mail →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="ftr">
+    <div class="w ftr-inner">
+      <span class="ftr-brand">Tangojam</span>
+      <span class="ftr-copy">© <span id="yr">2026</span> Norbert Kotzan</span>
+      <div class="ftr-links">
+        <a href="http://bienporteno.de" target="_blank" rel="noopener" data-h>Bien Porteño</a>
+        <a href="https://bandoneo.de/" target="_blank" rel="noopener" data-h>Bandoneo</a>
+        <a href="https://benditotango.de/" target="_blank" rel="noopener" data-h>Bendito</a>
+        <span>|</span>
+        <a href="http://tangojam.de/?page_id=950" data-h>Datenschutz</a>
+        <a href="http://tangojam.de/?page_id=1207" data-h>Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./assets/main.js"></script>
+</body>
+</html>
