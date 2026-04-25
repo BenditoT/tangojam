@@ -1,0 +1,128 @@
+[
+  {
+    "date": "2026-01-09",
+    "title": "Bandoneo im Jazzhaus Heidelberg",
+    "venue": "Jazzhaus",
+    "city": "Heidelberg",
+    "url": "https://bandoneo.de/",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-01-11",
+    "title": "Annette Postel und die Tango-Mafia",
+    "venue": "Theater",
+    "city": "Baden-Baden",
+    "url": "https://www.theater-baden-baden.de/spielplan/stueck/alles-tango-oder-was",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-01-15",
+    "title": "Milonga im Klub_K",
+    "venue": "Karlstorbahnhof",
+    "city": "Heidelberg",
+    "url": "https://www.karlstorbahnhof.de/anfahrt/",
+    "category": "milonga",
+    "role": "veranstalter"
+  },
+  {
+    "date": "2026-01-29",
+    "title": "Hemingway Lounge BarJazz",
+    "venue": "Hemingway Lounge",
+    "city": "Karlsruhe",
+    "url": "https://www.hemingwaylounge.de/events/barjazz-live-jochen-seiterle-norbert-kotzan-eintritt-frei/",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-03-07",
+    "title": "Sextetto Tango Flirteando",
+    "venue": "Talkirche",
+    "city": "Eppstein",
+    "url": "http://www.tango-flirteando.de/",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-03-08",
+    "title": "Misa a Buenos Aires (Martin Palmeri)",
+    "venue": "Kreuzkirche",
+    "city": "Reutlingen",
+    "url": "https://www.konzertchorreutlingen.de/konzerte/",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-03-14",
+    "title": "Musik im Oberhof",
+    "venue": "MUKS",
+    "city": "Buedingen",
+    "url": "https://www.muks-buedingen.de/services-9-4",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-03-15",
+    "title": "Cuarteto Bien Porteno feat. Jezebel",
+    "venue": "Cafemilonga",
+    "city": "Heidelberg",
+    "url": "http://bienporteno.de",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-03-19",
+    "title": "Milonga im Klub_K",
+    "venue": "Karlstorbahnhof",
+    "city": "Heidelberg",
+    "url": "https://www.karlstorbahnhof.de/anfahrt/",
+    "category": "milonga",
+    "role": "veranstalter"
+  },
+  {
+    "date": "2026-03-21",
+    "title": "Orquesta Tipica Tango Marcando",
+    "venue": "Theater Mobile",
+    "city": "Zwingenberg",
+    "url": "",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-04-11",
+    "title": "Konzert im Tollhaus",
+    "venue": "Tollhaus",
+    "city": "Karlsruhe",
+    "url": "",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-04-16",
+    "title": "Milonga im Klub_K",
+    "venue": "Karlstorbahnhof",
+    "city": "Heidelberg",
+    "url": "https://www.karlstorbahnhof.de/anfahrt/",
+    "category": "milonga",
+    "role": "veranstalter"
+  },
+  {
+    "date": "2026-04-26",
+    "title": "Orquesta Tipica Tango Marcando",
+    "venue": "",
+    "city": "Neckargemuend",
+    "url": "",
+    "category": "konzert",
+    "role": "musiker"
+  },
+  {
+    "date": "2026-04-30",
+    "title": "Tanz in den Mai",
+    "venue": "Bessunger Knabenschule",
+    "city": "Darmstadt",
+    "url": "",
+    "category": "milonga",
+    "role": "dj"
+  }
+]
