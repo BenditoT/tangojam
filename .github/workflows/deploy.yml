@@ -1,0 +1,94 @@
+# .github/workflows/deploy.yml
+#
+# Baut ein Container-Image, pusht es nach Artifact Registry und deployed
+# es als Cloud-Run-Service. Authentifizierung via Workload Identity Federation
+# (keine Keys im Repo).
+#
+# Anpassen:
+#   - SERVICE_NAME (unten)
+#   - ggf. Memory/CPU/Concurrency Flags
+#   - ggf. Env-Vars / Secrets
+name: Deploy to Cloud Run
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+env:
+  # ---- ANPASSEN pro Projekt ----
+  SERVICE_NAME: tangojam
+  # -------------------------------
+  REGION: europe-west3
+  ARTIFACT_REGISTRY_REPO: cloud-run-images
+
+# Pflicht für Workload Identity Federation:
+permissions:
+  id-token: write    # Erlaubt GitHub, OIDC-Token für GCP auszustellen
+  contents: read     # Lesezugriff auf den Code
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Authenticate to Google Cloud (WIF)
+        id: auth
+        uses: google-github-actions/auth@v2
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_SERVICE_ACCOUNT }}
+
+      - name: Set up gcloud CLI
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+
+      - name: Configure Docker for Artifact Registry
+        run: gcloud auth configure-docker ${{ env.REGION }}-docker.pkg.dev --quiet
+
+      - name: Build & tag image
+        run: |
+          IMAGE="${{ env.REGION }}-docker.pkg.dev/${{ secrets.GCP_PROJECT_ID }}/${{ env.ARTIFACT_REGISTRY_REPO }}/${{ env.SERVICE_NAME }}"
+          docker build \
+            --tag "${IMAGE}:${{ github.sha }}" \
+            --tag "${IMAGE}:latest" \
+            .
+          echo "IMAGE=${IMAGE}" >> "$GITHUB_ENV"
+
+      - name: Push image to Artifact Registry
+        run: |
+          docker push "${IMAGE}:${{ github.sha }}"
+          docker push "${IMAGE}:latest"
+
+      - name: Deploy to Cloud Run
+        id: deploy
+        run: |
+          # Kosten-optimierte Defaults: CPU 1 + 512Mi RAM + min-instances 0
+          # (ungenutzter Service kostet nichts). Hochdrehen, falls App träge startet.
+          gcloud run deploy "${{ env.SERVICE_NAME }}" \
+            --image "${IMAGE}:${{ github.sha }}" \
+            --region "${{ env.REGION }}" \
+            --platform managed \
+            --allow-unauthenticated \
+            --cpu 1 \
+            --memory 512Mi \
+            --concurrency 80 \
+            --min-instances 0 \
+            --max-instances 10 \
+            --quiet
+
+      - name: Output Service URL
+        run: |
+          URL=$(gcloud run services describe "${{ env.SERVICE_NAME }}" \
+            --region "${{ env.REGION }}" \
+            --format='value(status.url)')
+          echo "### ✅ Deployed" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Service URL:** $URL" >> "$GITHUB_STEP_SUMMARY"
+          echo "**Commit:** \`${{ github.sha }}\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "Service URL: $URL"
